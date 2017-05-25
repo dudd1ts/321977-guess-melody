@@ -1,7 +1,7 @@
 # Личный проект «Угадай мелодию» [![Build status][travis-image]][travis-url]
 
 * Студент: [Сергей Кондрашев](https://up.htmlacademy.ru/ecmascript/2/user/321977).
-* Наставник: `Неизвестно`.
+* Наставник: [Михаил Баранов](https://up.htmlacademy.ru/ecmascript/2/user/14760).
 
 ---
 
