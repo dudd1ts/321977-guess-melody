@@ -6,13 +6,18 @@
 
   const appElement = document.querySelector(`.app`);
   const mainElement = appElement.querySelector(`.main`);
+
   const templates = document.querySelector(`#templates`).content;
+  const welcomeTemplate = templates.querySelector(`.main--welcome`);
+  const levelGenreTemplate = templates.querySelector(`.main--level-genre`);
+  const levelArtistTemplate = templates.querySelector(`.main--level-artist`);
+  const resultTemplates = templates.querySelectorAll(`.main--result`);
   const screens = [
-    templates.querySelector(`.main--welcome`),
-    templates.querySelector(`.main--level-genre`),
-    templates.querySelector(`.main--level-artist`),
-    templates.querySelectorAll(`.main--result`)[0],
-    templates.querySelectorAll(`.main--result`)[1]
+    welcomeTemplate,
+    levelGenreTemplate,
+    levelArtistTemplate,
+    resultTemplates[0],
+    resultTemplates[1]
   ];
 
   const firstScreen = 0;
