@@ -51,7 +51,7 @@ const levelArtistScreen = getElementFromTemplate(`<section class="main main--lev
 
 const answersList = levelArtistScreen.querySelector(`.main-list`);
 answersList.addEventListener(`click`, (event) => {
-  if (event.target.classList.contains(`main-answer`)) {
+  if (event.target.classList.contains(`main-answer-r`)) {
     showScreen(levelGenreScreen);
   }
 });

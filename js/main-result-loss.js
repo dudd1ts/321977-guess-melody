@@ -10,7 +10,11 @@ const resultLossScreen = getElementFromTemplate(`<section class="main main--resu
   <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
 </section>`);
 
+const changeScreen = () => {
+  showScreen(welcomeScreen);
+};
+
 const replayElement = resultLossScreen.querySelector(`.main-replay`);
-replayElement.addEventListener(`click`, showScreen(welcomeScreen));
+replayElement.addEventListener(`click`, changeScreen);
 
 export default resultLossScreen;

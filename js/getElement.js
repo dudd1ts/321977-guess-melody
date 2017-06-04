@@ -1,8 +1,6 @@
-const getElementFromTemplate = (template) => {
+export default (template) => {
   const newElement = document.createElement(`section`);
   newElement.innerHTML = template;
 
-  return newElement.children[0]; // .cloneNode(true) ?
+  return newElement.children[0];
 };
-
-export default getElementFromTemplate;

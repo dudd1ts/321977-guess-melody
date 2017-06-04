@@ -13,7 +13,11 @@ const welcomeScreen = getElementFromTemplate(`<section class="main main--welcome
   </p>
 </section>`);
 
+const changeScreen = () => {
+  showScreen(levelArtistScreen);
+};
+
 const startGameElement = welcomeScreen.querySelector(`.main-play`);
-startGameElement.addEventListener(`click`, showScreen(levelArtistScreen));
+startGameElement.addEventListener(`click`, changeScreen);
 
 export default welcomeScreen;

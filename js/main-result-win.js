@@ -11,7 +11,11 @@ const resultWinScreen = getElementFromTemplate(`<section class="main main--resul
   <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
 </section>`);
 
+const changeScreen = () => {
+  showScreen(welcomeScreen);
+};
+
 const replayElement = resultWinScreen.querySelector(`.main-replay`);
-replayElement.addEventListener(`click`, showScreen(welcomeScreen));
+replayElement.addEventListener(`click`, changeScreen);
 
 export default resultWinScreen;

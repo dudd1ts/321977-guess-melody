@@ -34,15 +34,30 @@ const levelGenreScreen = getElementFromTemplate(`<section class="main main--leve
   </form>
 </section>`);
 
-const sendAnswerElement = levelGenreScreen.querySelector(`.genre-answer-send`);
+const answerForm = levelGenreScreen.querySelector(`.genre`);
+const sendAnswerElement = answerForm.querySelector(`.genre-answer-send`);
+const answers = [...answerForm.elements.answer];
 const resultScreens = [
   resultLossScreen,
   resultWinScreen
 ];
-sendAnswerElement.addEventListener(`click`, (event) => {
-  if (event.target.classList.contains(`main-answer`)) {
-    showScreen(resultScreens[Math.trunc(Math.random() * 2)]);
-  }
+
+sendAnswerElement.disabled = true;
+
+for (let answer of answers) {
+  answer.addEventListener(`change`, (() => {
+    let isChecked = answers.some((checkbox) => checkbox.checked);
+    if (isChecked) {
+      sendAnswerElement.disabled = false;
+    } else {
+      sendAnswerElement.disabled = true;
+    }
+  }));
+}
+
+answerForm.addEventListener(`submit`, (event) => {
+  event.preventDefault();
+  showScreen(resultScreens[Math.trunc(Math.random() * 2)]);
 });
 
 export default levelGenreScreen;
