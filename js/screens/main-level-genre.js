@@ -1,5 +1,5 @@
-import getElementFromTemplate from './getElement';
-import showScreen from './showScreen';
+import getElementFromTemplate from './../getElement';
+import showScreen from './../showScreen';
 import resultLossScreen from './main-result-loss';
 import resultWinScreen from './main-result-win';
 
