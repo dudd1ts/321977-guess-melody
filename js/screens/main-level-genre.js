@@ -35,28 +35,34 @@ const levelGenreScreen = getElementFromTemplate(`<section class="main main--leve
 </section>`);
 
 const answerForm = levelGenreScreen.querySelector(`.genre`);
-const sendAnswerElement = answerForm.querySelector(`.genre-answer-send`);
+const sendFormElement = answerForm.querySelector(`.genre-answer-send`);
 const answers = [...answerForm.elements.answer];
 const resultScreens = [
   resultLossScreen,
   resultWinScreen
 ];
 
-sendAnswerElement.disabled = true;
+sendFormElement.disabled = true;
 
 for (let answer of answers) {
   answer.addEventListener(`change`, (() => {
     let isChecked = answers.some((checkbox) => checkbox.checked);
     if (isChecked) {
-      sendAnswerElement.disabled = false;
+      sendFormElement.disabled = false;
     } else {
-      sendAnswerElement.disabled = true;
+      sendFormElement.disabled = true;
     }
   }));
 }
 
 answerForm.addEventListener(`submit`, (event) => {
   event.preventDefault();
+
+  answers.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+  sendFormElement.disabled = true;
+
   showScreen(resultScreens[Math.trunc(Math.random() * 2)]);
 });
 
