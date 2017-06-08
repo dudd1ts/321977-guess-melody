@@ -1,5 +1,5 @@
-import getElementFromTemplate from './../getElement';
-import showScreen from './../showScreen';
+import getElementFromTemplate from '../getElement';
+import showScreen from '../showScreen';
 import levelArtistScreen from './main-level-artist';
 
 const welcomeScreen = getElementFromTemplate(`<section class="main main--welcome">
@@ -13,11 +13,11 @@ const welcomeScreen = getElementFromTemplate(`<section class="main main--welcome
   </p>
 </section>`);
 
-const changeScreen = () => {
+const changeScreenHandler = () => {
   showScreen(levelArtistScreen);
 };
 
 const startGameElement = welcomeScreen.querySelector(`.main-play`);
-startGameElement.addEventListener(`click`, changeScreen);
+startGameElement.addEventListener(`click`, changeScreenHandler);
 
 export default welcomeScreen;

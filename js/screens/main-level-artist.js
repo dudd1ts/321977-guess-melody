@@ -1,8 +1,29 @@
-import getElementFromTemplate from './../getElement';
-import showScreen from './../showScreen';
+import getElementFromTemplate from '../getElement';
+import showScreen from '../showScreen';
 import levelGenreScreen from './main-level-genre';
 
-const levelArtistScreen = getElementFromTemplate(`<section class="main main--level main--level-artist">
+let levelArtist = Object.freeze({
+  time: {
+    minutes: 2,
+    seconds: 0
+  },
+  answers: [
+    {
+      name: `Пелагея`,
+      imgPath: ``
+    },
+    {
+      name: `Краснознаменная дивизия имени моей бабушки`,
+      imgPath: ``
+    },
+    {
+      name: `Lorde`,
+      imgPath: ``
+    }
+  ]
+});
+
+const template = (level) => `<section class="main main--level main--level-artist">
   <svg xmlns="http://www.w3.org/2000/svg" class="timer" viewBox="0 0 780 780">
     <circle
       cx="390" cy="390" r="370"
@@ -10,9 +31,9 @@ const levelArtistScreen = getElementFromTemplate(`<section class="main main--lev
       style="filter: url(.#blur); transform: rotate(-90deg) scaleY(-1); transform-origin: center"></circle>
 
     <div class="timer-value" xmlns="http://www.w3.org/1999/xhtml">
-      <span class="timer-value-mins">02</span><!--
+      <span class="timer-value-mins">${level.time.minutes}</span><!--
       --><span class="timer-value-dots">:</span><!--
-      --><span class="timer-value-secs">00</span>
+      --><span class="timer-value-secs">${level.time.seconds}</span>
     </div>
   </svg>
 
@@ -22,32 +43,18 @@ const levelArtistScreen = getElementFromTemplate(`<section class="main main--lev
     <h2 class="title main-title">Кто исполняет эту песню?</h2>
     <div class="player-wrapper"></div>
     <form class="main-list">
-      <div class="main-answer-wrapper">
-        <input class="main-answer-r" type="radio" id="answer-1" name="answer" value="val-1" />
-        <label class="main-answer" for="answer-1">
-          <img class="main-answer-preview" src="">
-          Пелагея
+      ${[...level.answers].map((answer, i) => `<div class="main-answer-wrapper">
+        <input class="main-answer-r" type="radio" id="answer-${i}" name="answer" value="val-${i}" />
+        <label class="main-answer" for="answer-${i}">
+          <img class="main-answer-preview" src="${answer.imgPath}">
+          ${answer.name}
         </label>
-      </div>
-
-      <div class="main-answer-wrapper">
-        <input class="main-answer-r" type="radio" id="answer-2" name="answer" value="val-1" />
-        <label class="main-answer" for="answer-2">
-          <img class="main-answer-preview" src="">
-          Краснознаменная дивизия имени моей бабушки
-        </label>
-      </div>
-
-      <div class="main-answer-wrapper">
-        <input class="main-answer-r" type="radio" id="answer-3" name="answer" value="val-1" />
-        <label class="main-answer" for="answer-3">
-          <img class="main-answer-preview" src="">
-          Lorde
-        </label>
-      </div>
+      </div>`).join(``)}
     </form>
   </div>
-</section>`);
+</section>`;
+
+const levelArtistScreen = getElementFromTemplate(template(levelArtist));
 
 const answersList = levelArtistScreen.querySelector(`.main-list`);
 answersList.addEventListener(`click`, (event) => {

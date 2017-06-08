@@ -1,5 +1,5 @@
-import getElementFromTemplate from './../getElement';
-import showScreen from './../showScreen';
+import getElementFromTemplate from '../getElement';
+import showScreen from '../showScreen';
 import welcomeScreen from './main-welcome';
 
 const resultWinScreen = getElementFromTemplate(`<section class="main main--result">
