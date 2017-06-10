@@ -2,41 +2,28 @@ import getElementFromTemplate from '../getElement';
 import showScreen from '../showScreen';
 import resultLossScreen from './main-result-loss';
 import resultWinScreen from './main-result-win';
+import {levelGenre as screenData} from '../data';
 
-const levelGenreScreen = getElementFromTemplate(`<section class="main main--level main--level-genre">
-  <h2 class="title">Выберите инди-рок треки</h2>
+const answerTemplate = (data, id) => `<div class="genre-answer">
+      <div class="player-wrapper"></div>
+      <input type="checkbox" name="answer" value="answer-${id + 1} + 1" id="a-${id + 1}">
+      <label class="genre-answer-check" for="a-${id + 1}"></label>
+    </div>`;
+
+const template = (data) => `<section class="main main--level main--level-genre">
+  <h2 class="title">${data.title}</h2>
   <form class="genre">
-    <div class="genre-answer">
-      <div class="player-wrapper"></div>
-      <input type="checkbox" name="answer" value="answer-1" id="a-1">
-      <label class="genre-answer-check" for="a-1"></label>
-    </div>
-
-    <div class="genre-answer">
-      <div class="player-wrapper"></div>
-      <input type="checkbox" name="answer" value="answer-1" id="a-2">
-      <label class="genre-answer-check" for="a-2"></label>
-    </div>
-
-    <div class="genre-answer">
-      <div class="player-wrapper"></div>
-      <input type="checkbox" name="answer" value="answer-1" id="a-3">
-      <label class="genre-answer-check" for="a-3"></label>
-    </div>
-
-    <div class="genre-answer">
-      <div class="player-wrapper"></div>
-      <input type="checkbox" name="answer" value="answer-1" id="a-4">
-      <label class="genre-answer-check" for="a-4"></label>
-    </div>
+    ${data.answers.map(answerTemplate).join(``)}
 
     <button class="genre-answer-send" type="submit">Ответить</button>
   </form>
-</section>`);
+</section>`;
+
+const levelGenreScreen = getElementFromTemplate(template(screenData));
 
 const answerForm = levelGenreScreen.querySelector(`.genre`);
 const sendFormElement = answerForm.querySelector(`.genre-answer-send`);
-const answers = [...answerForm.elements.answer];
+const answers = [...answerForm.querySelectorAll(`[name="answer"]`)];
 const resultScreens = [
   resultLossScreen,
   resultWinScreen

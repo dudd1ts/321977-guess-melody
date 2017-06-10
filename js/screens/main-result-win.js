@@ -1,15 +1,18 @@
 import getElementFromTemplate from '../getElement';
 import showScreen from '../showScreen';
 import welcomeScreen from './main-welcome';
+import {resultWin as screenData} from '../data';
 
-const resultWinScreen = getElementFromTemplate(`<section class="main main--result">
+const template = (data) => `<section class="main main--result">
   <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
 
-  <h2 class="title">Вы настоящий меломан!</h2>
-  <div class="main-stat">За&nbsp;2&nbsp;минуты<br>вы&nbsp;отгадали 4&nbsp;мелодии</div>
-  <span class="main-comparison">Это&nbsp;лучше чем у&nbsp;80%&nbsp;игроков</span>
+  <h2 class="title">${data.title}</h2>
+  <div class="main-stat">За&nbsp;2&nbsp;минуты<br>вы&nbsp;отгадали ${data.amountAnswers}&nbsp;мелодии</div>
+  <span class="main-comparison">Это&nbsp;лучше чем у&nbsp;${data.rating}%&nbsp;игроков</span>
   <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
-</section>`);
+</section>`;
+
+const resultWinScreen = getElementFromTemplate(template(screenData));
 
 const changeScreen = () => {
   showScreen(welcomeScreen);
