@@ -3,6 +3,8 @@ import showScreen from '../showScreen';
 import levelGenreScreen from './main-level-genre';
 import {time} from '../data';
 import {levelArtist as screenData} from '../data';
+import '../animate.js';
+import '../player.js';
 
 const answerTemplate = (data, id) => `<div class="main-answer-wrapper">
         <input class="main-answer-r" type="radio" id="answer-${id + 1}" name="answer" value="val-${id + 1}" />
@@ -39,6 +41,9 @@ const template = (data) => `<section class="main main--level main--level-artist"
 </section>`;
 
 const levelArtistScreen = getElementFromTemplate(template(screenData));
+
+const playerWrapper = levelArtistScreen.querySelector(`.player-wrapper`);
+window.initializePlayer(playerWrapper, screenData.audioPath);
 
 const answersList = levelArtistScreen.querySelector(`.main-list`);
 answersList.addEventListener(`click`, (event) => {

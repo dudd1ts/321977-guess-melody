@@ -12,18 +12,19 @@ export const welcome = Object.freeze({
 
 export const levelArtist = Object.freeze({
   title: `Кто исполняет эту песню?`,
+  audioPath: `./audio/back_and_forth.mp3`,
   answers: [
     {
       name: `Пелагея`,
-      imgPath: ``
+      imgPath: `./img/bands/pelageya.jpg`
     },
     {
       name: `Краснознаменная дивизия имени моей бабушки`,
-      imgPath: ``
+      imgPath: `./img/bands/grandmother.png`
     },
     {
       name: `Lorde`,
-      imgPath: ``
+      imgPath: `./img/bands/lorde.jpg`
     }
   ]
 });
@@ -33,19 +34,19 @@ export const levelGenre = Object.freeze({
   answers: [
     {
       correct: true,
-      filePath: ``,
+      audioPath: `./audio/back_and_forth.mp3`,
     },
     {
       correct: false,
-      filePath: ``,
+      audioPath: `./audio/dub_spirit.mp3`,
     },
     {
       correct: false,
-      filePath: ``,
+      audioPath: `./audio/how_it_began.mp3`,
     },
     {
-      correct: true,
-      filePath: ``,
+      correct: false,
+      audioPath: `./audio/waltz_of_the_flowers.mp3`,
     }
   ]
 });
