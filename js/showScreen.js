@@ -1,9 +1,7 @@
 const appElement = document.querySelector(`.app`);
-const mainElement = appElement.querySelector(`.main`);
 
 const showScreen = (screenElement) => {
-  mainElement.innerHTML = ``;
-  mainElement.appendChild(screenElement);
+  appElement.replaceChild(screenElement, appElement.querySelector(`.main`));
 };
 
 export default showScreen;
