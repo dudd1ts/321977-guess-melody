@@ -1,7 +1,7 @@
 import getElementFromTemplate from '../getElement';
-import showScreen from '../showScreen';
-import welcomeScreen from './main-welcome';
 import {resultLoss as screenData} from '../data';
+import {initialState as gameData} from '../data';
+import {stopGame} from '../controller';
 
 const template = (data) => `<section class="main main--result">
   <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
@@ -13,11 +13,11 @@ const template = (data) => `<section class="main main--result">
 
 const resultLossScreen = getElementFromTemplate(template(screenData));
 
-const changeScreen = () => {
-  showScreen(welcomeScreen);
+const repeatGameHandler = () => {
+  stopGame(gameData);
 };
 
 const replayElement = resultLossScreen.querySelector(`.main-replay`);
-replayElement.addEventListener(`click`, changeScreen);
+replayElement.addEventListener(`click`, repeatGameHandler);
 
 export default resultLossScreen;

@@ -1,6 +1,8 @@
-export const time = Object.freeze({
-  minutes: 2,
-  seconds: 0
+export const initialState = Object.freeze({
+  questionType: `artist`,
+  time: 120,
+  qestions: 10,
+  lives: 3
 });
 
 export const welcome = Object.freeze({

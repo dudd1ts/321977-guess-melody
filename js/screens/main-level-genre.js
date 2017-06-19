@@ -3,8 +3,7 @@ import showScreen from '../showScreen';
 import resultLossScreen from './main-result-loss';
 import resultWinScreen from './main-result-win';
 import {levelGenre as screenData} from '../data';
-import '../animate.js';
-import '../player.js';
+import initializePlayer from '../player';
 
 const answerTemplate = (data, id) => `<div class="genre-answer">
       <div class="player-wrapper"></div>
@@ -27,7 +26,7 @@ const answerForm = levelGenreScreen.querySelector(`.genre`);
 const sendFormElement = answerForm.querySelector(`.genre-answer-send`);
 const playerWrappers = [...answerForm.querySelectorAll(`.player-wrapper`)];
 playerWrappers.map((wrapper, id) => {
-  window.initializePlayer(wrapper, screenData.answers[id].audioPath);
+  initializePlayer(wrapper, screenData.answers[id].audioPath);
 });
 
 const answers = [...answerForm.querySelectorAll(`[name="answer"]`)];
