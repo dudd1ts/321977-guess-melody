@@ -1,6 +1,5 @@
 import getElementFromTemplate from '../getElement';
-import {welcome as screenData} from '../data';
-import {initialState as gameData} from '../data';
+import {welcome as screenData} from '../data/data';
 import {startGame} from '../controller';
 
 const template = (data) => `<section class="main main--welcome">
@@ -13,7 +12,7 @@ const template = (data) => `<section class="main main--welcome">
 const welcomeScreen = getElementFromTemplate(template(screenData));
 
 const startGameHandler = () => {
-  startGame(gameData);
+  startGame();
 };
 
 const startGameElement = welcomeScreen.querySelector(`.main-play`);

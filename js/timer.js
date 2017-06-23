@@ -42,7 +42,7 @@ const redrawTimer = (timer, animation) => {
 };
 
 
-const initializeCountdown = (time) => {
+const initializeCountdown = (time, callbackStep, callbackEnd) => {
   const element = document.querySelector(`.timer-line`);
   const radius = parseInt(element.getAttributeNS(null, `r`), 10);
   const timer = document.querySelector(`.timer-value`);
@@ -50,7 +50,13 @@ const initializeCountdown = (time) => {
   return Animation.animate(Animation.getAnimation(0, 1000, time), (animation) => {
     redrawCircle(element, radius, animation);
     redrawTimer(timer, animation);
-  }, () => timer.classList.add(`timer-value--finished`));
+    callbackStep(animation.step);
+  }, () => {
+    if (!document.querySelector(`.main--result`)) {
+      timer.classList.add(`timer-value--finished`);
+      callbackEnd();
+    }
+  });
 };
 
 export default initializeCountdown;
