@@ -1,6 +1,6 @@
 import getElementFromTemplate from '../getElement';
 import {welcome as screenData} from '../data/data';
-import {startGame} from '../controller';
+import {startGame} from '../render-screens';
 
 const template = (data) => `<section class="main main--welcome">
   <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>

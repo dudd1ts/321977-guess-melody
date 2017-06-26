@@ -1,6 +1,5 @@
 import getElementFromTemplate from '../getElement';
-import {initialState} from '../data/data';
-import {repeatGame} from '../controller';
+import {repeatGame} from '../render-screens';
 
 const renderResultWinScreen = (screenData) => {
   const template = (data) => `<section class="main main--result">
@@ -15,7 +14,7 @@ const renderResultWinScreen = (screenData) => {
   const resultWinScreen = getElementFromTemplate(template(screenData));
 
   const repeatGameHandler = () => {
-    repeatGame(initialState);
+    repeatGame();
   };
 
   const replayElement = resultWinScreen.querySelector(`.main-replay`);

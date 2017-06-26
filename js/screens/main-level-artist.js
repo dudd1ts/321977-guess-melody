@@ -2,6 +2,7 @@ import getElementFromTemplate from '../getElement';
 import {songs} from '../data/data';
 import initializePlayer from '../player';
 import {answerHandler, getSongs} from '../controller';
+import {chooseNextScreen} from '../render-screens';
 
 const renderLevelArtistScreen = () => {
   const answerTemplate = (data) => `<div class="main-answer-wrapper">
@@ -34,7 +35,7 @@ const renderLevelArtistScreen = () => {
   answersList.addEventListener(`click`, (event) => {
     if (event.target.classList.contains(`main-answer-r`)) {
       let isCorrectAnswer = (event.target.id === `answer-${correctSong.id}`);
-      answerHandler(isCorrectAnswer);
+      chooseNextScreen(answerHandler(isCorrectAnswer));
     }
   });
 

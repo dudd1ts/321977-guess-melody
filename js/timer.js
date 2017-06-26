@@ -13,6 +13,7 @@
 // Пропуск = Длина шага * Номер шага
 import Animation from './animate';
 import formatTime from './time-format';
+import {changeState} from './state-controller';
 
 const redrawCircle = (circle, radius, animation) => {
   const length = 2 * Math.PI * radius;
@@ -54,6 +55,7 @@ const initializeCountdown = (time, callbackStep, callbackEnd) => {
   }, () => {
     if (!document.querySelector(`.main--result`)) {
       timer.classList.add(`timer-value--finished`);
+      changeState({screenType: `gameLoss`});
       callbackEnd();
     }
   });

@@ -1,4 +1,5 @@
 export const initialState = Object.freeze({
+  screenType: `welcome`,
   timeLeft: 120,
   questions: 10,
   lives: 3,
@@ -53,7 +54,7 @@ export const songs = [
   },
 ];
 
-export const resultWin = Object.freeze({
+export const initialResultWinData = Object.freeze({
   title: `Вы настоящий меломан!`,
   rightAnswers: 0,
   scores: 0,

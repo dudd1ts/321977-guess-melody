@@ -2,6 +2,7 @@ import getElementFromTemplate from '../getElement';
 import {songs} from '../data/data';
 import initializePlayer from '../player';
 import {answerHandler, getSongs} from '../controller';
+import {chooseNextScreen} from '../render-screens';
 
 const renderLevelGenreScreen = () => {
   const answerTemplate = (data) => `<div class="genre-answer">
@@ -65,7 +66,7 @@ const renderLevelGenreScreen = () => {
     });
     sendFormElement.disabled = true;
 
-    answerHandler(isCorrectAnswer());
+    chooseNextScreen(answerHandler(isCorrectAnswer));
   });
 
   return levelGenreScreen;
