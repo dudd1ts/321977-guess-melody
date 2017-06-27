@@ -10,6 +10,8 @@ import initializeCountdown from './timer';
 import {statistics} from './data/data';
 import {getState, getStateProperty, changeState, resetState} from './state-controller';
 
+let stopTimerFn;
+
 export const repeatGame = () => {
   showScreen(welcomeScreen);
 };
@@ -17,6 +19,7 @@ export const repeatGame = () => {
 const removeTimer = () => {
   const appElement = document.querySelector(`.app`);
   appElement.removeChild(document.querySelector(`.main-timer`));
+  stopTimerFn();
 };
 
 const updateElapsedTime = (time) => {
@@ -27,7 +30,7 @@ export const startGame = () => {
   resetState();
   const timeLeft = getStateProperty(`timeLeft`);
   showTimer(timeLeft);
-  initializeCountdown(timeLeft, updateElapsedTime, stopGameLoss);
+  stopTimerFn = initializeCountdown(timeLeft, updateElapsedTime, stopGameLoss);
   showScreen(renderLevelArtistScreen());
 };
 

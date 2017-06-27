@@ -53,7 +53,7 @@ const initializeCountdown = (time, callbackStep, callbackEnd) => {
     redrawTimer(timer, animation);
     callbackStep(animation.step);
   }, () => {
-    if (!document.querySelector(`.main--result`)) {
+    if (document.querySelector(`.main--level`)) {
       timer.classList.add(`timer-value--finished`);
       changeState({screenType: `gameLoss`});
       callbackEnd();
