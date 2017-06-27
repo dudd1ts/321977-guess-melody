@@ -1,8 +1,8 @@
 import {initialState} from './data/data.js';
 
-let state = {};
+const state = {};
 
-export const getState = () => state;
+export const getState = () => Object.assign({}, state);
 
 export const getStateProperty = (propertyName) => {
   return state[propertyName];

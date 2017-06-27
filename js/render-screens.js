@@ -33,8 +33,8 @@ export const startGame = () => {
 
 export const stopGameWin = () => {
   removeTimer();
-  let state = getState();
-  let resultWinData = Object.assign({}, initialResultWinData);
+  const state = getState();
+  const resultWinData = Object.assign({}, initialResultWinData);
   resultWinData.rightAnswers = state.rightAnswers;
   resultWinData.scores = state.scores;
   resultWinData.elapsedTime = state.elapsedTime;
@@ -59,11 +59,11 @@ export const stopGameLoss = () => {
 };
 
 const showNextGameScreen = () => {
-  let gameScreens = [
+  const gameScreens = [
     renderLevelArtistScreen(),
     renderLevelGenreScreen()
   ];
-  let nextScreen = gameScreens[Math.trunc(Math.random() * gameScreens.length)];
+  const nextScreen = gameScreens[Math.trunc(Math.random() * gameScreens.length)];
   showScreen(nextScreen);
 };
 

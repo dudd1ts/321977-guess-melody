@@ -1,7 +1,7 @@
 import {getState, changeState} from './state-controller';
 
 export const answerHandler = (isCorrect) => {
-  let state = getState();
+  const state = getState();
 
   if (isCorrect) {
     state.rightAnswers++;
@@ -30,7 +30,7 @@ export const answerHandler = (isCorrect) => {
 };
 
 export const getSongs = (store, amount) => {
-  let songsSet = new Set();
+  const songsSet = new Set();
   do {
     songsSet.add(store[Math.trunc(Math.random() * store.length)]);
   } while (songsSet.size < amount);

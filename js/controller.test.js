@@ -1,30 +1,37 @@
 import assert from 'assert';
-import {resetState, getState} from './state-controller';
+import {resetState, getState, changeState} from './state-controller';
 import {answerHandler} from './controller';
 
 describe(`answerHandler`, () => {
   it(`should decrease state.questions by 1`, () => {
     resetState();
-    let currentState = getState();
-    const previousQuestions = currentState.questions;
+    const initialState = getState();
+    const initialQuestions = initialState.questions;
     answerHandler(true);
-    assert.equal(currentState.questions, previousQuestions - 1);
+    const newState = getState();
+    const newQuestions = newState.questions;
+    assert.equal(newQuestions, initialQuestions - 1);
   });
 
   describe(`correct answer`, () => {
     it(`should increase state.rightAnswers by 1`, () => {
       resetState();
-      let currentState = getState();
-      const previousRightAnswers = currentState.rightAnswers;
+      const initialState = getState();
+      const initialRightAnswers = initialState.rightAnswers;
       answerHandler(true);
-      assert.equal(currentState.rightAnswers, previousRightAnswers + 1);
+      const newState = getState();
+      const newRightAnswers = newState.rightAnswers;
+      assert.equal(newRightAnswers, initialRightAnswers + 1);
     });
+
     it(`shouldn't change state.lives`, () => {
       resetState();
-      let currentState = getState();
-      const previousLivesNumber = currentState.lives;
+      const initialState = getState();
+      const initialLives = initialState.lives;
       answerHandler(true);
-      assert.equal(currentState.lives, previousLivesNumber);
+      const newState = getState();
+      const newLives = newState.lives;
+      assert.equal(newLives, initialLives);
     });
 
   });
@@ -32,25 +39,31 @@ describe(`answerHandler`, () => {
   describe(`wrong answer`, () => {
     it(`shouldn't change state.rightAnswers`, () => {
       resetState();
-      let currentState = getState();
-      const previousRightAnswers = currentState.rightAnswers;
+      const initialState = getState();
+      const initialRightAnswers = initialState.rightAnswers;
       answerHandler(false);
-      assert.equal(currentState.rightAnswers, previousRightAnswers);
+      const newState = getState();
+      const newRightAnswers = newState.rightAnswers;
+      assert.equal(newRightAnswers, initialRightAnswers);
     });
 
     it(`should decrease state.lives by 1`, () => {
       resetState();
-      let currentState = getState();
-      const previousLivesNumber = currentState.lives;
+      const initialState = getState();
+      const initialLives = initialState.lives;
       answerHandler(false);
-      assert.equal(currentState.lives, previousLivesNumber - 1);
+      const newState = getState();
+      const newLives = newState.lives;
+      assert.equal(newLives, initialLives - 1);
     });
 
     it(`if state.lives is 0 should return 'gameLoss'`, () => {
       resetState();
-      let currentState = getState();
-      currentState.lives = 1;
-      assert.equal(answerHandler(false), `gameLoss`);
+      const initialState = getState();
+      initialState.lives = 1;
+      changeState(initialState);
+      const newScreenType = answerHandler(false);
+      assert.equal(newScreenType, `gameLoss`);
     });
   });
 });
