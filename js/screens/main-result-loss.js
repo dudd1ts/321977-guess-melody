@@ -1,23 +1,26 @@
 import getElementFromTemplate from '../getElement';
-import showScreen from '../showScreen';
-import welcomeScreen from './main-welcome';
-import {resultLoss as screenData} from '../data';
+import {resultLoss as screenData} from '../data/data';
+import {repeatGame} from '../render-screens';
 
-const template = (data) => `<section class="main main--result">
-  <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
+const renderResultLossScreen = () => {
+  const template = (data) => `<section class="main main--result">
+    <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
+  
+    <h2 class="title">${data.title}</h2>
+    <div class="main-stat">${data.text}</div>
+    <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
+  </section>`;
 
-  <h2 class="title">${data.title}</h2>
-  <div class="main-stat">${data.text}</div>
-  <span role="button" tabindex="0" class="main-replay">Сыграть ещё раз</span>
-</section>`;
+  const resultLossScreen = getElementFromTemplate(template(screenData));
 
-const resultLossScreen = getElementFromTemplate(template(screenData));
+  const repeatGameHandler = () => {
+    repeatGame();
+  };
 
-const changeScreen = () => {
-  showScreen(welcomeScreen);
+  const replayElement = resultLossScreen.querySelector(`.main-replay`);
+  replayElement.addEventListener(`click`, repeatGameHandler);
+
+  return resultLossScreen;
 };
 
-const replayElement = resultLossScreen.querySelector(`.main-replay`);
-replayElement.addEventListener(`click`, changeScreen);
-
-export default resultLossScreen;
+export default renderResultLossScreen;

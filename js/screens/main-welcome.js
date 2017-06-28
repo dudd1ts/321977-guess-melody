@@ -1,7 +1,6 @@
 import getElementFromTemplate from '../getElement';
-import showScreen from '../showScreen';
-import levelArtistScreen from './main-level-artist';
-import {welcome as screenData} from '../data';
+import {welcome as screenData} from '../data/data';
+import {startGame} from '../render-screens';
 
 const template = (data) => `<section class="main main--welcome">
   <section class="logo" title="Угадай мелодию"><h1>Угадай мелодию</h1></section>
@@ -12,11 +11,11 @@ const template = (data) => `<section class="main main--welcome">
 
 const welcomeScreen = getElementFromTemplate(template(screenData));
 
-const changeScreenHandler = () => {
-  showScreen(levelArtistScreen);
+const startGameHandler = () => {
+  startGame();
 };
 
 const startGameElement = welcomeScreen.querySelector(`.main-play`);
-startGameElement.addEventListener(`click`, changeScreenHandler);
+startGameElement.addEventListener(`click`, startGameHandler);
 
 export default welcomeScreen;
